@@ -2,12 +2,11 @@ import math
 
 
 class MeltingTemp:
-    def __init__(self, nukleotid1, nukleotid2, Ct, Ca, Cb):
+    def __init__(self, nukleotid1, nukleotid2, Ca, Cb):
         self.nukleotid1 = nukleotid1
         self.nukleotid2 = nukleotid2
         self.dH = 0  # [kcal/mol]
         self.dS = 0  # [cal/(K*mol)]
-        self.Ct = Ct
         self.Ca = Ca
         self.Cb = Cb
 
@@ -44,7 +43,7 @@ class MeltingTemp:
         self.sum_dH_dS(k1)
         self.sum_dH_dS(k2)
 
-        if k1 == k2:
-            return (1000 * self.dH) / (self.dS + R * (math.log(self.Ct)))  # in K
+        if self.Ca > 0 and self.Cb == 0:
+            return (1000 * self.dH) / (self.dS + R * (math.log(self.Ca)))  # in K
         else:
             return (1000 * self.dH) / (self.dS + (R * (math.log(self.Ca - (self.Cb / 2)))))  # in K
