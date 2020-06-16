@@ -8,7 +8,7 @@ def check_on_correct_input(nukleotid1, nukleotid2, Ca, Cb):
     k = 0
     k1 = len(nukleotid1)
     k2 = len(nukleotid2)
-    if Ca <= 0 or Cb < 0:
+    if Ca < 0 or Cb < 0:
         exit('Напишите коректную концентрацию')
     while k < min(k1, k2):
         if not ((nukleotid2[k] == 'A' and nukleotid1[k] == 'T') or (nukleotid2[k] == 'T' and nukleotid1[k] == 'A') or

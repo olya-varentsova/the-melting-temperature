@@ -45,5 +45,7 @@ class MeltingTemp:
 
         if self.Ca > 0 and self.Cb == 0:
             return (1000 * self.dH) / (self.dS + R * (math.log(self.Ca)))  # in K
-        else:
+        elif self.Ca > 0 and self.Cb > 0:
             return (1000 * self.dH) / (self.dS + (R * (math.log(self.Ca - (self.Cb / 2)))))  # in K
+        else:
+            return (1000 * self.dH) / self.dS
