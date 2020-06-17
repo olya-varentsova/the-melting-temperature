@@ -4,10 +4,10 @@ import sys
 from DNA.temperatureMelting import MeltingTemp
 
 
-def check_on_correct_input(nucleotid1, nucleotid2, dH, dS, Ca, Cb):
+def check_on_correct_input(dna1, dna2, dH, dS, Ca, Cb):
     k = 0
-    k1 = len(nucleotid1)
-    k2 = len(nucleotid2)
+    k1 = len(dna1)
+    k2 = len(dna2)
     if Ca < 0 or Cb < 0:
         exit('Напишите корректную концентрацию')
     if dH < 0:
@@ -15,18 +15,18 @@ def check_on_correct_input(nucleotid1, nucleotid2, dH, dS, Ca, Cb):
     if dS < 0:
         exit('Напишите корректный параметр энторопии: dS >= 0')
     while k < min(k1, k2):
-        if not ((nucleotid2[k] == 'A' and nucleotid1[k] == 'T') or (nucleotid2[k] == 'T' and nucleotid1[k] == 'A') or
-                (nucleotid2[k] == 'G' and nucleotid1[k] == 'C') or (nucleotid2[k] == 'C' and nucleotid1[k] == 'G')):
+        if not ((dna2[k] == 'A' and dna1[k] == 'T') or (dna2[k] == 'T' and dna1[k] == 'A') or
+                (dna2[k] == 'G' and dna1[k] == 'C') or (dna2[k] == 'C' and dna1[k] == 'G')):
             exit('Напишите корректную последовательность')
         k += 1
     if k2 > k1:
         while k < k2:
-            if not (nucleotid2[k] == 'T' or nucleotid2[k] == 'A' or nucleotid2[k] == 'C' or nucleotid2[k] == 'G'):
+            if not (dna2[k] == 'T' or dna2[k] == 'A' or dna2[k] == 'C' or dna2[k] == 'G'):
                 exit('Напишите корректную последовательность')
             k += 1
     if k1 > k2:
         while k < k1:
-            if not (nucleotid1[k] == 'T' or nucleotid1[k] == 'A' or nucleotid1[k] == 'C' or nucleotid1[k] == 'G'):
+            if not (dna1[k] == 'T' or dna1[k] == 'A' or dna1[k] == 'C' or dna1[k] == 'G'):
                 exit('Напишите коректную последовательность')
             k += 1
 

@@ -2,8 +2,8 @@ import math
 
 
 class MeltingTemp:
-    def __init__(self, nucleotid1, nucleotid2, dH, dS, Ca, Cb):
-        self.nucleotids = [nucleotid1, nucleotid2]
+    def __init__(self, dna1, dna2, dH, dS, Ca, Cb):
+        self.dna = [dna1, dna2]
         self.dH = dH  # [kcal/mol]
         self.dS = dS  # [cal/(K*mol)]
         self.Ca = Ca
@@ -41,13 +41,13 @@ class MeltingTemp:
 
     ]
     def sum_dH_dS(self):  # count dH and dS
-        for nucleotid in self.nucleotids:
-            n = self.nucleotids.index(nucleotid)
-            k = len(nucleotid)
+        for strand in self.dna:
+            n = self.dna.index(strand)
+            k = len(strand)
             i = 0
             while i < k - 1:
                 for key in self.table_of_nucleotids[n]:
-                    if self.nucleotids[n][i] + self.nucleotids[n][i + 1] == key:
+                    if self.dna[n][i] + self.dna[n][i + 1] == key:
                         self.dH += self.table_of_nucleotids[n][key][0]
                         self.dS += self.table_of_nucleotids[n][key][1]
                 i = i + 1
