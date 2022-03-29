@@ -9,7 +9,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 mysql-connector==2.2.9
 mysql-connector-python==8.0.19
-paramiko==2.7.1
+paramiko==2.10.1
 protobuf==3.6.1
 pyaml==20.4.0
 pycparser==2.20
